@@ -51,6 +51,8 @@ var keywords = map[string]TokenType{
 	"return": RETURN,
 }
 
+// in main should conflict
+
 // distinguished between builtin identifiers(keywords) and user defined identifiers
 func LookupIdent(ident string) TokenType {
 	if tok, ok := keywords[ident]; ok {
