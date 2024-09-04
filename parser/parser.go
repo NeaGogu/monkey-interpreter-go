@@ -45,6 +45,8 @@ func (p *Parser) ParseProgram() *ast.Program {
 			prog.Statements = append(prog.Statements, stmt)
 		}
 
+		// NOTE: parseProgram advances the token after getting the statement, so DO NOT advance the token after finding
+		// the semicolon
 		p.nextToken()
 	}
 
@@ -55,9 +57,24 @@ func (p *Parser) parseStatement() ast.Statement {
 	switch p.curToken.Type {
 	case token.LET:
 		return p.parseLetStatement()
+	case token.RETURN:
+		return p.parseReturnStatement()
 	default:
 		return nil
 	}
+}
+
+func (p *Parser) parseReturnStatement() *ast.ReturnStatement {
+	st := &ast.ReturnStatement{Token: p.curToken}
+
+	p.nextToken()
+
+	// TODO: skip expression for now, only look for semicolon
+	for !p.curTokenIs(token.SEMICOLON) {
+		p.nextToken()
+	}
+
+	return st
 }
 
 func (p *Parser) parseLetStatement() *ast.LetStatement {
