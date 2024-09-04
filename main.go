@@ -7,6 +7,8 @@ import (
 	"os/user"
 )
 
+// lala test 3
+
 func main() {
 	user, err := user.Current()
 	if err != nil {

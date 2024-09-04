@@ -64,6 +64,7 @@ func (p *Parser) parseStatement() ast.Statement {
 	}
 }
 
+// lalalala test
 func (p *Parser) parseReturnStatement() *ast.ReturnStatement {
 	st := &ast.ReturnStatement{Token: p.curToken}
 
@@ -77,6 +78,7 @@ func (p *Parser) parseReturnStatement() *ast.ReturnStatement {
 	return st
 }
 
+// lalal test 21
 func (p *Parser) parseLetStatement() *ast.LetStatement {
 	st := &ast.LetStatement{Token: p.curToken}
 
